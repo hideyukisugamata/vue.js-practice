@@ -2,7 +2,7 @@
 <div id="home">
   <input type="text" maxlength="7" v-model="inputZipcode"/>
   <button @click="GO">住所自動入力</button>
-  <p>Address：{{this.name}}</p>
+  <p>Address：{{name}}</p>
 </div>
 </template>
 
@@ -11,29 +11,28 @@ import axios from "axios";
 export default{
   data(){
     return{
-      inputZipcode:""
+      inputZipcode:"",
+      name:""
     }
   },
   methods:{
+  GO(){
   async created(){
     const item = await axios.get(
-      `https://apis.postcode-jp.com/api/v4/postcodes/?apikey=z9UKvOjwgzkU24DOKSj5YMxpvjNKnPYfyIfxtFB`
+      `https://apis.postcode-jp.com/api/v4/postcodes/${this.inputZipcode}/?apikey=z9UKvOjwgzkU24DOKSj5YMxpvjNKnPYfyIfxtFB`
     );
     const codeData= item.data;
-    this.zipcode = codeData.postcode;
     this.name= codeData.allAddress;
   },
-  GO(){
-    const input
-    if((this.zipcode) == (inputcode)){
-
-    }
-
   }
   }
+};
+
+  
+  
 
 
 
-}
+
 </script>
 
