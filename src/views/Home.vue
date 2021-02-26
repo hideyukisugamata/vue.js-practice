@@ -16,14 +16,18 @@ export default{
     }
   },
   methods:{
-  GO(){
-  async created(){
+  async GO(){
     const item = await axios.get(
       `https://apis.postcode-jp.com/api/v4/postcodes/${this.inputZipcode}/?apikey=z9UKvOjwgzkU24DOKSj5YMxpvjNKnPYfyIfxtFB`
     );
-    const codeData= item.data;
-    this.name= codeData.allAddress;
-  },
+    const codeData= item.data[0]
+
+    console.log(item)
+
+    this.name= codeData.allAddress
+
+    console.log(name);
+  
   }
   }
 };
